@@ -1,0 +1,55 @@
+$ ./target/release/node-template key generate --scheme Sr25519 --password-interactive
+Secret phrase:       ramp peasant umbrella point donate best floor grid skull border cup cool
+  Network ID:        substrate
+  Secret seed:       0xab5b3c4ce5bfd08b16abce0ff9f734beba4e1861c8ede4befc733d73d0ad0360
+  Public key (hex):  0x6672a11f89381badf393319b64d959b1a0bb8e988053e994224bc3c41a39812a
+  Account ID:        0x6672a11f89381badf393319b64d959b1a0bb8e988053e994224bc3c41a39812a
+  Public key (SS58): 5EP2nyPXPdmirJtGMvTkqX7oFPLfaMtc9drX9AL5NFbt3TcL
+  SS58 Address:      5EP2nyPXPdmirJtGMvTkqX7oFPLfaMtc9drX9AL5NFbt3TcL
+  Password:          hogehoge
+
+$ ./target/release/node-template key inspect --password-interactive --scheme Ed25519 "ramp peasant umbrella point donate best floor grid skull border cup cool"
+Secret phrase:       ramp peasant umbrella point donate best floor grid skull border cup cool
+  Network ID:        substrate
+  Secret seed:       0xab5b3c4ce5bfd08b16abce0ff9f734beba4e1861c8ede4befc733d73d0ad0360
+  Public key (hex):  0x8e5cebdfe79f1bb4fa48bd2298e18676fc76b38790863b15d4cd10f29c5c50af
+  Account ID:        0x8e5cebdfe79f1bb4fa48bd2298e18676fc76b38790863b15d4cd10f29c5c50af
+  Public key (SS58): 5FHNG3atgCy2Njd6B5gnRgC3YJckA4EY8GQvEDPAsg1SzFpt
+  SS58 Address:      5FHNG3atgCy2Njd6B5gnRgC3YJckA4EY8GQvEDPAsg1SzFpt
+  Password:          hogehoge
+
+Sr25519(aura):    5EP2nyPXPdmirJtGMvTkqX7oFPLfaMtc9drX9AL5NFbt3TcL
+Ed25519(grandpa): 5FHNG3atgCy2Njd6B5gnRgC3YJckA4EY8GQvEDPAsg1SzFpt
+
+
+./target/release/node-template key insert --base-path /tmp/node01 \
+  --chain customSpecRaw.json \
+  --scheme Sr25519 \
+  --suri "ramp peasant umbrella point donate best floor grid skull border cup cool" \
+  --password-interactive \
+  --key-type aura
+
+./target/release/node-template key insert \
+  --base-path /tmp/node01 \
+  --chain customSpecRaw.json \
+  --scheme Ed25519 \
+  --suri "ramp peasant umbrella point donate best floor grid skull border cup cool" \
+  --password-interactive \
+  --key-type gran
+
+./target/release/node-template key insert --base-path /tmp/node02 \
+  --chain customSpecRaw.json \
+  --scheme Sr25519 \
+  --suri "ramp peasant umbrella point donate best floor grid skull border cup cool" \
+  --password-interactive \
+  --key-type aura
+
+./target/release/node-template key insert --base-path /tmp/node02 \
+  --chain customSpecRaw.json \
+  --scheme Ed25519 --suri "ramp peasant umbrella point donate best floor grid skull border cup cool" \
+  --password-interactive \
+  --key-type gran
+
+
+Configure the contracts pallet
+https://docs.substrate.io/tutorials/work-with-pallets/contracts-pallet/
